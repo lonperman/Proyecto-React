@@ -41,15 +41,13 @@ class Router extends Component {
     
         return(
             <BrowserRouter>
-                <div >
-                    <Header 
-                    titulo= 'Eventos Universidad del Valle'
-                    />
+                <div className="contenedor" >
+                    <Header/>
                     <Banner/>
                     <Menu/>
                     <Switch>
-                        <Route exact path="/Conferencista" component={RegistrarConferencista}/>
-                        <Route exact path="/Formulario" render={ () => {
+                        <Route  path="/Conferencista" component={RegistrarConferencista}/>
+                        <Route  path="/Formulario" render={ () => {
                             return(
                                 <Formulario
                                 registrarPost= {this.registrarPost}

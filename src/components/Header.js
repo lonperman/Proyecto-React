@@ -6,14 +6,11 @@ class Header extends Component {
     render() {
         return(
             <div> 
-               <Link to={'/'} > 
                 <nav>
                     <div className="nav-wrapper #d32f2f red darken-2 hero">
-                    <a href="#" className="brand-logo">Universidad del Valle</a>
-                
+                    <Link to={'/'} className="brand-logo">Universidad del Valle</Link>
                     </div>
                 </nav>
-                </Link>
             </div>             
             )
     }
