@@ -1,19 +1,38 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route,Switch} from 'react-router-dom';
 import axios from 'axios';
-import swal from 'sweetalert2';
-import Header from './Header';
-import Banner from './Banner';
-import Menu from './Menu';
-import RegistrarConferencista from './RegistrarConferencista';
-import Formulario from './Formulario';
+import Header from './Principal/Header';
+import Banner from './Principal/Banner';
+import Menu from './Principal/Menu';
+import RegistrarConferencista from './Conferencista/RegistrarConferencista';
+import SingleConferencista from './Conferencista/SingleConferencista';
+import Formulario from './Usuarios/Formulario';
+
 
 
 class Router extends Component {
     
     state = {
-        post:{}
+        post:[],
+        conferencistaC: []
        
+    }
+
+    RegistrarConferencista = (conferencistaR) => {
+       axios.post(``)
+    }
+
+    componentDidMount() {
+        this.ObtenerConferencista();
+    }
+    
+    ObtenerConferencista = () => {
+        axios.get(`https://jsonplaceholder.typicode.com/posts/1/comments`)
+        .then(res => {
+           this.setState({
+              conferencistaC: res.data
+           })
+        })
     }
    
    
@@ -46,8 +65,34 @@ class Router extends Component {
                     <Banner/>
                     <Menu/>
                     <Switch>
-                        <Route  path="/Conferencista" component={RegistrarConferencista}/>
-                        <Route  path="/Formulario" render={ () => {
+                        <Route  path="/Conferencista" render={ () => {
+                            return(
+                                <RegistrarConferencista
+                                RegistrarConferencista = {this.RegistrarConferencista}
+                                conferencistaC = {this.state.conferencistaC}
+                                />
+                            )
+                        } }
+                        
+                        />
+                         <Route exact  path="/conferencistaver/:conferencistaId" render={ (props) => {
+                           let idconferencista = props.location.pathname.replace('/conferencistaver/','');
+                           
+                           const conferencistaC = this.state.conferencistaC;
+
+                           let filtro;
+                           filtro = conferencistaC.filter(conferencistas => (
+                               conferencistas.id == idconferencista
+                           ))
+                              return(
+                                  <SingleConferencista
+                                      conf = {filtro[0]}
+                                  />
+                              )
+                        }}
+                        />
+                     
+                        <Route exact  path="/Formulario" render={ () => {
                             return(
                                 <Formulario
                                 registrarPost= {this.registrarPost}

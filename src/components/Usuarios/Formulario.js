@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
 import Swal from 'sweetalert2';
 
 
@@ -9,10 +8,7 @@ import Swal from 'sweetalert2';
 
 class Formulario extends Component {
 
-    state = {
-        error: '',
-        resultado: {}
-      }
+    
 
     //Crear los refs
     documentoRef = React.createRef();
