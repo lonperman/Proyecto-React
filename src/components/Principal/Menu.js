@@ -9,7 +9,7 @@ const Menu = () => {
   
     return(
       
-      <div className="contenedor-menu">
+      <aside className="nav-wrapper contenedor-menu">
 
       <ul className="menu">
       <a  className=" btn-menu menu ">Menu <i className="icono material-icons">menu</i></a>
@@ -25,7 +25,7 @@ const Menu = () => {
         </li>          
         <li><NavLink to={'/Conferencista'} className="menu" activeClassName="activo"><i className="material-icons icono izquierda ">email</i> Contactanos</NavLink></li>
       </ul>
-     </div>
+     </aside>
     )
   
 }
