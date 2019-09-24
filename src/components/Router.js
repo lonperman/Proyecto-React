@@ -19,7 +19,12 @@ class Router extends Component {
     }
 
     RegistrarConferencista = (conferencistaR) => {
-       axios.post(``)
+       axios.post(`http://localhost:4552/api/conferencistas/crear`,conferencistaR)
+       .then(res =>{
+
+       })
+
+       console.log(conferencistaR);
     }
 
     componentDidMount() {
@@ -37,16 +42,8 @@ class Router extends Component {
    
    
     registrarPost = (post) => {
-       axios.post(`http://localhost:4552/api/usuarios/crear`,{
-        id_usuario: post.id_usuario,
-        nom_usuario: post.nom_usuario,
-        correo: post.correo,
-        telefono: post.telefono,
-        pass: post.pass,
-        sexo: post.sexo,
-        tipo: post.tipo
-       }).then(res =>{
-
+       axios.post(`http://localhost:4552/api/usuarios/crear`,post)
+       .then(res =>{
        })
 
       
